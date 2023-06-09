@@ -1,11 +1,11 @@
 import React from 'react'
 import {useNavigate} from 'react-router-dom';
 
-function Home() {
+function Home(props) {
   let navigate= useNavigate()
   return (
     <div>
-        <h1>This is the home page</h1>
+        <h1>This is the home page of {props.userName}</h1>
         <button onClick={()=>navigate('/contact')}>Change to Contact Page</button>
         <button onClick={()=>navigate('/menu')}>Change to Menu page</button>
         <button onClick={()=>navigate('/profile')}>Change to Profile page</button>

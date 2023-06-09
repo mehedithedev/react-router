@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
@@ -7,6 +7,7 @@ import Navbar from './pages/Navbar';
 import Profile from './pages/Profile';
 
 function App() {
+  const [userName, setUserName] = useState('Mehedi Hasan')
   return (
     <div className='app'>
       <Router>
@@ -16,7 +17,7 @@ function App() {
         <Routes>
           <Route
            path='/'
-            element={<Home/>}
+            element={<Home userName={userName}/>}
           />
           <Route
             path='/menu'
@@ -24,7 +25,7 @@ function App() {
           />
           <Route
             path='/profile'
-            element={<Profile/>}
+            element={<Profile userName= {userName} />}
           />
           <Route
             path='/contact'
