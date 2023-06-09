@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState , useContext, createContext} from 'react'
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
@@ -6,18 +6,21 @@ import Contact from './pages/Contact';
 import Navbar from './pages/Navbar';
 import Profile from './pages/Profile';
 
+export const AppContext = createContext()
+
 function App() {
   const [userName, setUserName] = useState('Mehedi Hasan')
   return (
     <div className='app'>
+      <AppContext.Provider value={{userName, setUserName}}>
       <Router>
       <Navbar/>
       {/* Nav bar won't be changed no matter in which page we are and it's gonna be static */}
 
-        <Routes>
+        <Routes>  
           <Route
            path='/'
-            element={<Home userName={userName}/>}
+            element={<Home />}
           />
           <Route
             path='/menu'
@@ -25,7 +28,7 @@ function App() {
           />
           <Route
             path='/profile'
-            element={<Profile userName= {userName} />}
+            element={<Profile/>}
           />
           <Route
             path='/contact'
@@ -46,6 +49,7 @@ function App() {
           This is the footer
         </footer>
       </Router>
+      </AppContext.Provider>
     </div>
   )
 }
